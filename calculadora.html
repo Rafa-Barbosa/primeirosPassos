@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Calculadora</title>
+	<style>
+		body{
+			font: normal 18pt Arual;
+		}
+		input {
+			font: normal 18pt Arial;
+			width: 100px;
+		}
+		input#sinal {
+			width: 30px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Calculadora virtual</h1>
+	<p>Escolha: <br> "+" para somar; <br> "-" para subtrair; <br> "*" para multiplicar; <br> "/" para dividir.</p>
+	<form>
+		<input type="number" name="n1" id="n1">
+		<input type="text" name="sinal" id="sinal">
+		<input type="number" name="n2" id="n2">
+		<input type="button" value="Somar" onclick="somar()">
+		<input type="reset" value="Limpar" onclick="limpar()">
+	</form>
+	<div id="res">Resultado</div>
+	<script>
+		function limpar(){
+			res.innerHTML = 'Resultado'
+		}
+
+		function somar(){
+			var tn1 = window.document.getElementById('n1')
+			var tn2 = window.document.getElementById('n2')
+			var sinal = document.querySelector('input#sinal').value
+			var res = window.document.getElementById('res')
+			var n1 = Number(tn1.value)
+			var n2 = Number(tn2.value)
+			switch (sinal) {
+				case '+':
+					var s = n1 + n2;
+					res.innerHTML = `${n1} mais ${n2} é igual a <strong>${s}</strong>`;
+					break;
+
+				case '-':
+					var s = n1 - n2;
+					res.innerHTML = `${n1} menos ${n2} é igual a <strong>${s}</strong>`;
+					break;
+
+				case '*':
+					var s = n1 * n2;
+					res.innerHTML = `${n1} vezes ${n2} é igual a <strong>${s}</strong>`;
+					break;
+
+				case '/':
+					var s = n1 / n2;
+					res.innerHTML = `${n1} dividido por ${n2} é igual a <strong>${s}</strong>`;
+					break;
+
+				default:
+					res.innerHTML = 'Digite um símbolo válido!';
+					break;
+			}
+		}
+	</script>
+</body>
+</html>

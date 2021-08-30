@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lanf="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Pedra Papel Tesolra</title>
+	<style>
+		body {
+			background: rgb(86, 86, 209);
+			font: normal 15pt Arial;
+		}
+		header {
+			color: white;
+			text-align: center;
+		}
+		section {
+			background: white;
+			border-radius: 10px;
+			padding: 15px;
+			width: 300px;
+			margin: auto;
+			box-shadow: 7px 7px 15px rgb(0, 0, 0);
+		}
+		header#hjogo2{
+			margin-top: 50px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<p><strong>Jogo Pedra Papel Tesoura!!</strong></p>
+	</header>
+	<section>
+		<div>
+			<select id="jogada">
+				<option>Pedra</option>
+				<option>Papel</option>
+				<option>Tesoura</option>
+			</select>
+			<input type="button" value="jogar" onclick="clicar()">
+		</div>
+
+		<div id="res">
+			Resultado
+		</div>
+		<div id="res2"></div>
+	</section>
+
+	<header id="hjogo2">
+		<p><strong>Jogo Teste sua sorte!!</strong></p>
+	</header>
+	<section>
+		<div>
+			<input type="number" name="jogo" id="jogo">
+			<input type="button" value="Enviar" onclick="jogar()">
+		</div>
+		<div id="resJogo">
+			Resultado
+		</div>
+	</section>
+	<script>
+		var a = window.document.getElementById('res')
+		var b = window.document.getElementById('res2')
+
+		// função para o jogo "Pedra Papel Tesoura"
+		function clicar(){
+			// Recebendo o valor jogado e criando um número aleatório
+			var jogada = document.getElementById('jogada').value
+			var random = Math.floor(Math.random() * 3)
+
+			// Alterando o número aleatório por uma jogada possível
+			switch (random){
+				case 0:
+					a.innerHTML = `A máquina jogou <strong>Pedra</strong><br>`
+					var jogadaMaq = "Pedra"
+					break
+				case 1:
+					a.innerHTML = `A máquina jogou <strong>Papel</strong><br>`
+						var jogadaMaq = "Papel"
+					break
+				case 2:
+					a.innerHTML = `A máquina jogou <strong>Tesoura</strong><br>`
+						var jogadaMaq = "Tesoura"
+					break
+				default:
+					a.innerHTML = `Erro[]`
+					break
+			}
+
+			// Identificando o ganhador e imprimindo na tela o resultado
+			if (jogada == jogadaMaq){
+				b.innerHTML = 'Empate!'
+			} else if (jogada == 'Pedra' && jogadaMaq == 'Papel'){
+				b.innerHTML = 'Você perdeu!'
+			} else if (jogada == 'Pedra' && jogadaMaq == 'Tesoura'){
+				b.innerHTML = '<strong>Você é o vencedor!!!</strong>'
+			} else if (jogada == 'Papel' && jogadaMaq == 'Pedra'){
+				b.innerHTML = '<strong>Você é o vencedor!!!</strong>'
+			} else if (jogada == 'Papel' && jogadaMaq == 'Tesoura'){
+				b.innerHTML = 'Você perdeu!'
+			} else if (jogada == 'Tesoura' && jogadaMaq == 'Pedra'){
+				b.innerHTML = 'Você perdeu!'
+			} else if (jogada == 'Tesoura' && jogadaMaq == 'Papel'){
+				b.innerHTML = '<strong>Você é o vencedor!!!</strong>'
+			} else {
+				b.innerHTML = 'Erro'
+			}
+		}
+
+		var t = window.document.getElementById('resJogo')
+		// Função para o jogo "Teste a sua sorte", onde o mesmo valo de 0 - 10
+		function jogar(){
+			// Recebendo o valor jogado e criando um número aleatório
+			var jogada2 = document.getElementById('jogo').value
+			var random2 = Math.floor(Math.random() * 10)
+
+			// Identificando a jogada e imprimindo o resultado
+			if (jogada2 <= 10){
+				t.innerHTML = `A máquina escolheu ${random2}<br>`
+				if (jogada2 == random2){
+					t.innerHTML += '<strong>Você ganhou!!!</strong>'
+				} else {
+					t.innerHTML += 'Não foi dessa vez...'
+				}
+			} else {
+				t.innerHTML = 'Digite um valor menor que 10!'
+			}
+		}
+	</script>
+</body>
+<html>
